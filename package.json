@@ -1,5 +1,5 @@
 {
-  "name": "decentralizedimmunizationehr",
+  "name": "vac-acc-ehr",
   "version": "1.0.0",
   "description": "a decentralized patient health record app build on React Native for immunization records",
   "main": "index.js",
