@@ -17,7 +17,7 @@
 9. [Patient Workflow](#patient-workflow)
 10. [Technical Implementation](#technical-implementation-draft)  
   a. [Front End Wireframes](#front-end-wireframes)  
-  b. [Back End Architecture](#back-end-architecture)  
+  b. [Back End Architecture](#back-end-architecture)     
 11. [Contributors](#contributors)
 
 ## Web Domains
@@ -82,7 +82,7 @@ To add more information
 To add more information
 <img id="ghetto-front-end-ui" src="whitepaper-assets/initial-patient-workflow.png" />
 
-## Technical Implementation- DRAFT
+## Technical Implementation-DRAFT
 This is the initial technical under consideration. Have an idea, comment, concern? Please create an issue in our repo: https://github.com/tesla809/Vac-Acc-EHR/
 
 ### Front End Wireframes
