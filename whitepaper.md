@@ -15,9 +15,9 @@
 7. [Electronic Records](#electronic-records)
 8. [Competitive Advantages](#competitive-advantages)
 9. [Patient Workflow](#patient-workflow)
-10. [Technical Implementation](#technical-implementation-draft)
-  a. [Front End Wireframes](#front-end-wireframes)
-  b. [Back End Architecture](#back-end-architecture)
+10. [Technical Implementation](#technical-implementation-draft) . 
+  a. [Front End Wireframes](#front-end-wireframes) . 
+  b. [Back End Architecture](#back-end-architecture) . 
 11. [Contributors](#contributors)
 
 ## Web Domains
