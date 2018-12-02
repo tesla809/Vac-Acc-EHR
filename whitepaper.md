@@ -28,7 +28,7 @@
 **Slack**: http://bit.ly/StowProtocolSlack  
 and **join**: #decentralized-ehr  
 
-## Problem Statement:
+## Problem Statement
 Current solutions for patients to manage their individual health records in an electronic format, all rely on Health Record (EHR) companies such as Epic. These companies are focused on Hospital-to-Hospital transactions, offering only a ‘Patient Portal’ where patients can log in and access their health records, but cannot add any records or send them to another individual.
 
 These EHRs fall short of providing patients with a means of providing quick, efficient access to their immunization records and do not satisfy verification concerns for border crossing and institutional access.
