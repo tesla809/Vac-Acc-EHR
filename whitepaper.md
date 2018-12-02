@@ -18,6 +18,7 @@
 10. [Technical Implementation](#technical-implementation-draft)
   a. [Front End Wireframes](#front-end-wireframes)
   b. [Back End Architecture](#back-end-architecture)
+11. [Contributors](#contributors)
 
 ## Web Domains
 **Website**: vacaccehr.squarespace.com
@@ -92,3 +93,18 @@ To add formal wireframes and description
 To add formal wireframes and description
 <img src="whitepaper-assets/initial-back-end-architecture.png" />
 ...
+
+## Contributors
+- Kuan Lin Huang     
+- Nathan Boone  
+- Anthony Albertorio   
+- Hong Wang   
+- Anurag Gandhi  
+- Abhi Ratnakumar   
+- Aliasgar Merchant  
+- Tobi Olagunju   
+- Idan Gutkind  
+- Doron Gutkind  
+- Vutsal Singhal
+- Juan Carlos Calderon
+- Charles Okochu
