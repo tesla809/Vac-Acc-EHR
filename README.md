@@ -83,7 +83,7 @@ To add more information
 <img id="ghetto-front-end-ui" src="whitepaper-assets/initial-patient-workflow.png" />
 
 ## Technical Implementation-DRAFT
-This is the initial technical under consideration. Have an idea, comment, concern? Please create an issue in our repo: https://github.com/tesla809/Vac-Acc-EHR/
+This is the initial technical under consideration. Have an idea, comment, concern? Please create an issue in our repo: https://github.com/tesla809/Vac-Acc-EHR/issues
 
 ### Front End Wireframes
 To add formal wireframes and description
