@@ -21,12 +21,12 @@
 11. [Contributors](#contributors)
 
 ## Web Domains
-**Website**: vacaccehr.squarespace.com
-**Github**: https://github.com/tesla809/Vac-Acc-EHR/
-**Email / Google Drive**: vaccaccehr@gmail.com
-**Twitter**: https://twitter.com/vaccacc
-**Slack**: http://bit.ly/StowProtocolSlack
-and **join**: #decentralized-ehr
+**Website**: vacaccehr.squarespace.com  
+**Github**: https://github.com/tesla809/Vac-Acc-EHR/  
+**Email / Google Drive**: vaccaccehr@gmail.com  
+**Twitter**: https://twitter.com/vaccacc  
+**Slack**: http://bit.ly/StowProtocolSlack  
+and **join**: #decentralized-ehr  
 
 ## Problem Statement:
 Current solutions for patients to manage their individual health records in an electronic format, all rely on Health Record (EHR) companies such as Epic. These companies are focused on Hospital-to-Hospital transactions, offering only a ‘Patient Portal’ where patients can log in and access their health records, but cannot add any records or send them to another individual.
@@ -60,7 +60,7 @@ Features (In order of importance):
 ## Paper Records
 **For paper records (PDFs of Immunization Records + the International Certificate of Vaccination)**
 
-1. Patient / Provider Action - Send PDF files to team to digitize them and upload to MS Infrastructure
+1. Patient / Provider Action - Send PDF files to team to digitize them and upload to MS Infrastructure  
 a. Immunization Records OR International Certificate of Vaccination
 2. IPFS node support
 3. Blockchain for authentication (Electronic we store pointer to centralized source such as EHR)
@@ -95,16 +95,19 @@ To add formal wireframes and description
 ...
 
 ## Contributors
-- Kuan Lin Huang     
-- Nathan Boone  
-- Anthony Albertorio   
-- Hong Wang   
-- Anurag Gandhi  
-- Abhi Ratnakumar   
-- Aliasgar Merchant  
-- Tobi Olagunju   
-- Idan Gutkind  
-- Doron Gutkind  
-- Vutsal Singhal
+- [Nathan Boone](https://github.com/nathanboone)  
+- [Anthony Albertorio](https://github.com/tesla809)
+- [Doron Gutkind](https://github.com/dgutkind)
+- [Idan Gutkind](https://github.com/idangutkind)  
+- [Charles Okochu](https://github.com/ocobra)
+- [Kuan Lin Huang](https://github.com/kuanlinhuang)  
+- [Vutsal Singhal](https://github.com/vutsalsinghal)
+- [Louell Sala](https://github.com/Alchemist21)
+- [Dina Deljanin](https://github.com/dinadeljanin)
+- [Rene Medalla](https://github.com/renegmed)
 - Juan Carlos Calderon
-- Charles Okochu
+- [Aliasgar Merchant](https://github.com/alijnmerchant21)    
+- Hong Wang
+- [Anurag Gandhi](https://github.com/anurag1604)  
+- Abhi Ratnakumar   
+- Tobi Olagunju
