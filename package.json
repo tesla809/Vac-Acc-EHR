@@ -1,29 +1,25 @@
 {
-  "name": "vac-acc-ehr",
-  "version": "1.0.0",
-  "description": "a decentralized patient health record app build on React Native for immunization records",
-  "main": "index.js",
+  "name": "my-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-scripts": "2.1.1"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kuanlinhuang/decentralizedImmunizationEHR.git"
+  "eslintConfig": {
+    "extends": "react-app"
   },
-  "keywords": [
-    "react",
-    "native",
-    "medtech",
-    "patient",
-    "health-record",
-    "PHR",
-    "EHR",
-    "electronic-health-record"
-  ],
-  "author": "see README.md",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/kuanlinhuang/decentralizedImmunizationEHR/issues"
-  },
-  "homepage": "https://github.com/kuanlinhuang/decentralizedImmunizationEHR#readme"
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
