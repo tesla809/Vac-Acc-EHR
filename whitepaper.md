@@ -16,8 +16,8 @@
 8. [Competitive Advantages](#competitive-advantages)
 9. [Patient Workflow](#patient-workflow)
 10. [Technical Implementation](#technical-implementation-draft)  
-  a. [Front End Wireframes](#front-end-wireframes)      
-  b. [Back End Architecture](#back-end-architecture)   
+  a. [Front End Wireframes](#front-end-wireframes)  
+  b. [Back End Architecture](#back-end-architecture)     
 11. [Contributors](#contributors)
 
 ## Web Domains
@@ -39,7 +39,7 @@ How might we improve access to countries and services for **students** and **int
 ## Use Case
 John Doe is a college student traveling abroad to Africa. He will need to provide proof of immunization against yellow fever in order to cross into Kenya and will also have to prove to school officials that he has had the seasonal flu vaccine.
 
-John goes to a clinic and is given an injection providing him with immunity for yellow fever. In addition to storing his immunization record on the clinic’s EHR as well as being provided a folded paper certificate (International Certification of Vaccination) he asks that his record be faxed or emailed to the Vac – Acc EHR and an image be sent to them as well. The clinic does so, and presses “verified” on the confirmation email sent by Vac – Acc to verify that the doctor administered the yellow fever vaccine.
+John goes to a clinic and is given an injection providing him with immunity for yellow fever. In addition to storing his immunization record on the clinic’s EHR as well as being provided a folded paper certificate (International Certification of Vaccination) he asks that his record be faxed or emailed to the Vac–Acc EHR and an image be sent to them as well. The clinic does so, and presses “verified” on the confirmation email sent by Vac–Acc to verify that the doctor administered the yellow fever vaccine.
 
 John loses his bag, which was carrying both his certificate of vaccination, on the flight. Once he arrives to Kenya, he’s unable to show them he’s already had the vaccine. He calls the clinic, but they’re unable to do anything other than send him a picture of his immunization record. He has no way of having a paper card arriving to him quickly enough. He can pull up his patient portal on his phone, but the border patrol is looking for the international certificate of vaccination.
 
@@ -82,8 +82,8 @@ To add more information
 To add more information
 <img id="ghetto-front-end-ui" src="whitepaper-assets/initial-patient-workflow.png" />
 
-## Technical Implementation- DRAFT
-This is the initial technical under consideration. Have an idea, comment, concern? Please create an issue in our repo: https://github.com/tesla809/Vac-Acc-EHR/
+## Technical Implementation-DRAFT
+This is the initial technical under consideration. Have an idea, comment, concern? Please create an issue in our repo: https://github.com/tesla809/Vac-Acc-EHR/issues
 
 ### Front End Wireframes
 To add formal wireframes and description
