@@ -4,8 +4,9 @@
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
-  height: 10vmin;
-  border-radius: 10%;
+  height: 15vmin;
+  border-radius: 0%;
+  margin-top: -60vh;
 }
 
 .App-header {
@@ -23,6 +24,11 @@
   color: #61dafb;
 }
 
+p {
+  color: #333;
+}
+
+/*
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -31,3 +37,4 @@
     transform: rotate(360deg);
   }
 }
+*/
