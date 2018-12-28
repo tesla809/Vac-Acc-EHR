@@ -10,9 +10,13 @@ function Attest(props) {
         <div className="m-4">Attestation Approval</div>
         <div className="m-4">            
           <div>ID: {attestation.id}</div>  
-          <div>Description: {attestation.name}</div> 
-          <div>Image:<img src="doc1.jpg" alt="" height="150" width="150"/></div>
-
+          <div>Description: {attestation.name}</div>  
+        </div> 
+        <div className="m-4"> 
+          <div>Image:</div>     
+          <img src="../img/doc1.jpg" alt="" height="150" width="150"/> 
+        </div>  
+        <div className="m-4">
           <button className="btn btn-success m-4" onClick = {() => {
               props.onAttest(attestation);
               props.onHistory.push('/AttestList');
