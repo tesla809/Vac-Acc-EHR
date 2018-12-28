@@ -6,15 +6,22 @@ function Attest(props) {
     const attestation = attestations.find( (attestation) => attestation.id === Number(id));
  
     return ( 
-      <div> 
-        <div><img src="doc1.jpg" alt="attestation 1" height="150" width="150"/></div>
-        <div>{attestation.id}</div>  
-        <div>{attestation.name}</div> 
-        
-        <button onClick = {() => {
-            props.onAttest(attestation);
-            props.onHistory.push('/AttestList');
-        }}> Attest Now </button>
+      <div className="container"> 
+        <div className="m-4">Attestation Approval</div>
+        <div className="m-4">            
+          <div>ID: {attestation.id}</div>  
+          <div>Description: {attestation.name}</div> 
+          <div>Image:<img src="doc1.jpg" alt="" height="150" width="150"/></div>
+
+          <button className="btn btn-success m-4" onClick = {() => {
+              props.onAttest(attestation);
+              props.onHistory.push('/AttestList');
+          }}> Attest Now </button>
+
+          <button className="btn btn-success m-4" onClick = {() => { 
+              props.onHistory.push('/AttestList');
+          }}> Cancel </button>
+        </div>
       </div> 
     );
    

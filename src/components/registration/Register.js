@@ -24,13 +24,28 @@ class Register extends Component {
     render() {
         return (
             <div>
-                <h1> Vaccine Administrator Registration </h1>
-                <div className="form">
-                    <form onSubmit={this.handleSubmit}>
-                        <input type="text" placeholder="Name" name="name"/>
-                        <input type="text" placeholder="License No." name="license"/>
-                        <button> Save </button>                        
-                    </form>
+                <div className="col-8 p-4">
+                    Vaccine Administrator Registration 
+                </div> 
+                <div className="row">
+                    <div className="col-sm-9">
+                        <form onSubmit={this.handleSubmit}>
+                            <div className="form-group m-4">
+                                <label for="name">Vaccine Admin Name</label>
+                                <input className="form-control" type="text" id="name" placeholder="Enter your name"/>
+                            </div>
+
+                            <div className="form-group m-4">
+                                <label for="license">License No.</label>
+                                <input className="form-control" type="text" id="name" placeholder="Enter your license no."/>
+                            </div>
+                        </form>
+
+                        <button type="submit" className="btn btn-success m-4">Submit</button> 
+                        <button type="submit" className="btn btn-success m-4" onClick = {() => { 
+                            this.props.onHistory.push('/VacAdmin');
+                        }}> Cancel </button> 
+                    </div>
                 </div>
             </div>
         

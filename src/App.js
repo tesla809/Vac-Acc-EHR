@@ -7,7 +7,13 @@ import VacAdmin from './components/VacAdmin';
 import Patient from './components/Patient';
 import Register from './components/registration/Register'; 
 import AttestList from './components/attestation/AttestList';
-import Attest from './components/attestation/Attest';
+import Attest from './components/attestation/Attest'; 
+import PatientUploadImmun from './components/patients/PatientUploadImmun';
+import PatientConfig from './components/patients/PatientConfig'; 
+import RecordsList from './components/patients/records/RecordsList'; 
+import Record from './components/patients/records/Record';
+import AttestRecordsList from './components/patients/records/AttestRecordsList'; 
+import AttestRecord from './components/patients/records/AttestRecord';
 
 class App extends Component {
   
@@ -16,18 +22,24 @@ class App extends Component {
     this.state = {
         forAttestations: [],
         attested: [], 
-        registrations: []      
+        registrations: [],
+        immunizations: [],
+        patientAttestations: [],      
     } 
     
     this.attest = this.attest.bind(this);
-
+    
   }
   componentDidMount() {
     const forAttestations = SimulateFetchForAttestionFromDb();
     const attested = SimulateFetchAttestedFromDb();
+    const immunizations = SimulatePatientRecord();
+    const patientAttestations = SimulatePatientAttestationsRecord();
     this.setState({
       forAttestations,
-      attested,            
+      attested,
+      immunizations,
+      patientAttestations,            
     });
 
     console.log("componentDidMount");
@@ -52,7 +64,7 @@ class App extends Component {
   
   };
 
-  render() {
+  render() { 
     return (
       <div>
          <Route exact path="/" render={ () => (
@@ -67,31 +79,54 @@ class App extends Component {
             </div>    
          )} /> 
 
-         <Route exact path="/VacAdmin" render={ ({history}) => (
-              <VacAdmin />   
+         <Route exact path="/VacAdmin" render={ (params) => (
+              <VacAdmin  onHistory={params.history} />   
          )} />
          
-         <Route exact path="/Register" render={ ({history}) => (
+         <Route exact path="/Register" render={ (params) => (
               <Register onRegister = {(registerData) => {
                   this.register(registerData)
-                  history.push('/');
-                }} />   
+                  params.history.push('/');
+                }} onHistory={params.history} />   
          )} />
 
-         <Route exact path="/AttestList" render={ ({history}) => (
-              <AttestList attestations={this.state.forAttestations} onAttest={this.attest}/>
+         <Route exact path="/AttestList" render={ (params) => (
+              <AttestList attestations={this.state.forAttestations} onAttest={this.attest} onHistory={params.history}/>
          )} />
 
          <Route exact path="/Attest/:id" render={ ( params) => (
               <Attest {...params} attestations={this.state.forAttestations} onAttest={this.attest} onHistory={params.history} /> 
-              
-             
+               
          )} />
 
-         <Route exact path="/Patient" render={ ({history}) => (
-              <Patient />   
+         <Route exact path="/Patient" render={ (params) => (
+              <Patient onHistory={params.history} />   
+         )} />
+           
+         <Route exact path="/PatientUploadImmun" render={ (params) => (
+              <PatientUploadImmun onHistory={params.history} />
+         )} />
+ 
+         <Route exact path="/PatientConfig" render={ ({history}) => (
+              <PatientConfig />
+         )} />
+         <Route exact path="/RecordsList" render={ (params) => (
+              <RecordsList immunizations = {this.state.immunizations} onHistory={params.history} />
          )} />
 
+         <Route exact path="/Record/:id" render={ ( params) => (
+              <Record {...params} immunizations={this.state.immunizations} onHistory={params.history} recordid={this.state.immunizations.id} /> 
+               
+         )} />
+
+         <Route exact path="/AttestRecordsList/:id" render={ ( params ) => (
+              <AttestRecordsList {...params} patientAttestations = {this.state.patientAttestations} onHistory={params.history}/>
+         )} />
+
+         <Route exact path="/AttestRecord/:parentid/:id" render={ ( params) => (
+              <AttestRecord {...params} patientAttestations={this.state.patientAttestations} onHistory={params.history} /> 
+               
+         )} />
       </div>
     );
   }
@@ -127,4 +162,37 @@ function SimulateFetchAttestedFromDb() {
   return [{}] 
 } 
 
+
+function SimulatePatientRecord() {
+  return [{
+      id: 1,
+      description: "Tetanus vaccination", 
+      dateadmin: "2001-01-12",
+      adminby: "Dr. John Doe",
+      location: "ABC Clinic Main St. Anytown, AnyState"
+      }, 
+      {
+      id: 2,
+      description: "Anti Polio vaccination", 
+      dateadmin: "2001-10-07",
+      adminby: "Dr. Jane Smith",
+      location: "St. John Medical First St. Anytown, AnyState"  
+      }, 
+      
+  ]
+} 
+
+function SimulatePatientAttestationsRecord() {
+  return [{
+      id: 1,
+      description: "Tetanus vaccination attestation 1", 
+      image: "./tetanus1.jpg",  
+      }, 
+      {
+      id: 2,
+      description: "Tetanus vaccination attestation 2", 
+      image: "./tetanus2.jpg",
+      },  
+  ]
+} 
 export default App;

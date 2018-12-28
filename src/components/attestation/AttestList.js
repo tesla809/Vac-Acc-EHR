@@ -3,13 +3,17 @@ import AttestItem from './AttestItem';
 
 function AttestList(props) { 
     return (
-      <div> 
-        <h1>Attestation</h1>
-        <div><b>Attest the following immunizations:</b></div> 
-        <div>
+      <div className="container"> 
+        <div className="m-4">Attestations For Approval</div>
+         
+        <div className="m-4">
             {props.attestations.map( (attestation, index) => 
                <AttestItem key={index} attestation={attestation} onAttest={props.onAttest} />)}
         </div>
+        
+        <button className="btn btn-success m-4" onClick = {() => { 
+            props.onHistory.push('/VacAdmin');
+        }}> Back </button>
       </div>
     );
    
