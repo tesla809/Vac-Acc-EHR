@@ -9,8 +9,8 @@ function AttestRecord(props) {
     return ( 
       <div className="container"> 
         <div className="m-4"> 
-            <div>ID: {patientAttestation.id}</div>  
-            <div>Description: {patientAttestation.description}</div> 
+            <div><b>ID:</b> {patientAttestation.id}</div>  
+            <div><b>Description:</b> {patientAttestation.description}</div> 
         </div>  
          
         <div className="m-4"> 

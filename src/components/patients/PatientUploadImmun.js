@@ -31,7 +31,7 @@ class PatientUploadImmun extends React.Component {
         return (
             <div className="container">
                 <div className="d-flex flex-row justify-content-start">
-                    <div className="m-4">
+                    <div className="heading m-4">
                         Patient Immunization Input 
                     </div>
                 </div> 

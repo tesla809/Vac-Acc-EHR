@@ -5,7 +5,7 @@ function Patient(props) {
   const { onHistory } = props;
   return (
     <section className="container">
-      <div className="col-12 p-4">
+      <div className="heading col-12 p-4">
         Patient Options
       </div>
       <div>

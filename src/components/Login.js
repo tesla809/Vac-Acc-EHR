@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function Login(props)  { 
     return (
       <div className="container">
-        <div className="col-8 p-4 ">
+        <div className="heading col-8 p-4 ">
             Sign-in as
         </div>
         <div>

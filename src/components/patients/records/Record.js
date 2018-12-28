@@ -17,7 +17,7 @@ class Record extends React.Component {
         return ( 
             <div className="container"> 
                
-                  <div className="col-12 p-2">{immunization.description}</div>
+                  <div className="heading col-12 p-2">{immunization.description}</div>
                    
                     <div className="col-2"></div>
                     <div className="col-8">   

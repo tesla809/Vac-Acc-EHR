@@ -5,7 +5,7 @@ function VacAdmin(props) {
     const { onHistory } = props;
     return (
       <section className="container">
-        <div className="col-12 p-1">
+        <div className="heading col-12 p-1">
           Vaccine Admin Options
         </div>
         <div>

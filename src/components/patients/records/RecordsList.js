@@ -4,7 +4,7 @@ import RecordItem from './RecordItem';
 function RecordsList(props) { 
     return (
       <div className="container">
-        <div className="col-12 p-1">
+        <div className="heading col-12 p-1">
             Patient Immunization List
         </div>
         <div>

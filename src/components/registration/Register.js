@@ -24,7 +24,7 @@ class Register extends Component {
     render() {
         return (
             <div>
-                <div className="col-8 p-4">
+                <div className="heading col-8 p-4">
                     Vaccine Administrator Registration 
                 </div> 
                 <div className="row">

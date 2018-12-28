@@ -20,6 +20,16 @@
   color: white;
 }
 
+.App-header2 {
+  background-color: #fff;
+  min-height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
 .App-link {
   color: #61dafb;
 }
@@ -37,4 +47,13 @@ p {
     transform: rotate(360deg);
   }
 }
-*/
+  
+.heading{
+    background-color: white;
+    color:black !important;
+    font-size: calc(10px + 2vmin);
+    padding:2px;
+    text-align: left;
+    font-weight: 500;
+}   
+ 

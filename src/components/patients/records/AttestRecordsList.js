@@ -10,7 +10,7 @@ class AttestRecordsList extends React.Component {
 
     return (
       <div className="container"> 
-        <div className="p-4">Patient Attestation List</div> 
+        <div className="heading p-4">Patient Attestation List</div> 
         <div>
             { patientAttestations.map( (patientAttestation, index) => 
                <AttestRecordItem key={index} parentid={recordid} patientAttestation={patientAttestation}   />)}

@@ -7,7 +7,7 @@ function Attest(props) {
  
     return ( 
       <div className="container"> 
-        <div className="m-4">Attestation Approval</div>
+        <div className="heading m-4">Attestation Approval</div>
         <div className="m-4">            
           <div>ID: {attestation.id}</div>  
           <div>Description: {attestation.name}</div>  

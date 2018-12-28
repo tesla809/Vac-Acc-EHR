@@ -4,7 +4,7 @@ import AttestItem from './AttestItem';
 function AttestList(props) { 
     return (
       <div className="container"> 
-        <div className="m-4">Attestations For Approval</div>
+        <div className="heading m-4">Attestations For Approval</div>
          
         <div className="m-4">
             {props.attestations.map( (attestation, index) => 

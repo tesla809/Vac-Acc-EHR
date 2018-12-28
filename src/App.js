@@ -137,23 +137,23 @@ class App extends Component {
 function SimulateFetchForAttestionFromDb() {
   return [{
       id: 1,
-      name: "for attestion 1", 
+      name: "attestion 1", 
       }, 
       {
       id: 2,
-      name: "for attestion 2",  
+      name: "attestion 2",  
       }, 
       {
       id: 3,
-      name: "for attestion 3", 
+      name: "attestion 3", 
       }, 
       {
       id: 4,
-      name: "for attestion 4", 
+      name: "attestion 4", 
       }, 
       {
       id: 5,
-      name: "for attestion 5", 
+      name: "attestion 5", 
       },
   ]
 } 
