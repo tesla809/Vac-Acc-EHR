@@ -4,13 +4,11 @@ import { View, Text, TouchableOpacity } from 'react-native'
 
 export default class ApprovalListItem extends React.PureComponent {
     
-    onPress = () => {
+    onPress = () => { 
       this.props.onPressItem(this.props.id);
     };
   
-    render() {
-        //const textColor = this.props.selected ? "red" : "black";
-
+    render() { 
         return (
             <TouchableOpacity onPress={this.onPress}>
                 <View>

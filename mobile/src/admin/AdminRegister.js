@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { View, Text, Button, StyleSheet } from 'react-native'
-import { Navigation } from 'react-native-navigation'
 
 export default class AdminRegister extends Component {
     static options(props) {
@@ -16,14 +15,9 @@ export default class AdminRegister extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text> Register as Admin</Text>
-                <Button
-                    onPress={() => Navigation.pop(this.props.componentId)}
-                    title="Go Back"
-                /> 
+                <Text> Register as Admin</Text> 
             </View>
-        )
-       
+        ) 
     }
 }
 

@@ -3,7 +3,7 @@ import { View, Text, Button, StyleSheet } from 'react-native'
 import { Navigation } from 'react-native-navigation' 
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import { toAdmin, toPatient } from './Navigation';
+import {  toPatient } from './navigation';
   
 class Home extends Component {
      
@@ -42,8 +42,43 @@ class Home extends Component {
                 adminBy: 'Dr. Terry Taylor'
             }
         ) 
-        this.state = {data: data}; 
-        //approveAttestHandler = this.approveAttestHandler.bind(this)
+        //this.state = {data: data}; 
+
+        const patientdata = new Map();
+        patientdata.set(11, 
+                {  
+                    id: 11,
+                    patient: 'A',
+                    description: 'Anti Tetanus Immunization',
+                    dateAdministered: '2001-05-23',
+                    location: 'ABC Medical Clinic 123 Main St. Anytown, Anystate, USA',
+                    adminBy: 'Dr. John Smith'
+                }
+            )
+        patientdata.set(12, 
+            {  
+                id: 12,
+                patient: 'A',
+                description: 'Anti Rabies Immunization',
+                dateAdministered: '2002-07-28',
+                location: 'ABC Medical Clinic 123 Main St. Anytown, Anystate, USA',
+                adminBy: 'Dr. Jane Dane'
+            }
+        )
+
+        patientdata.set(13, 
+            {  
+                id: 13,
+                patient: 'B',
+                description: 'Anti Polio Vaccination',
+                dateAdministered: '2005-06-15',
+                location: 'ABC Medical Clinic 101 Main St. Anytown, Anystate, USA',
+                adminBy: 'Dr. Terry Taylor'
+            }
+        ) 
+        this.state = {data, patientdata }; 
+
+        //this.approveAttestHandler = this.approveAttestHandler.bind(this)
     }
 
     static options(props) {
@@ -55,14 +90,8 @@ class Home extends Component {
             }
         };
     } 
-
-    // goToAdmin = () => { 
-    //     toAdmin()
-    // }
-
-    goToPatient = () => { 
-        toPatient()
-    }
+ 
+    
 
     render() {
         return (
@@ -78,119 +107,238 @@ class Home extends Component {
 
     goToAdmin = async () => {
         try { 
-        const home_image = await Icon.getImageSource("ios-home", 30);
-        const register_image = await Icon.getImageSource("ios-person-add", 30);
-        const list_image = await Icon.getImageSource("ios-list", 30);
-
-        //await Navigation.dismissAllModals();
-        await Navigation.setRoot({
+            const home_image = await Icon.getImageSource("ios-home", 30);
+            const register_image = await Icon.getImageSource("ios-person-add", 30);
+            const list_image = await Icon.getImageSource("ios-list", 30);
+            
+            //await Navigation.dismissAllModals();
+            await Navigation.setRoot({
             root: {
-                bottomTabs: {
-                    id: 'Admin',
-                    children: [
-                        {
-                            stack: {
-                                id: 'Register',
-                                children: [
-                                    {
-                                        component: {
-                                            name: 'admin.Admin',
-                                            options: {
-                                                topBar: {
-                                                    visible: true,
-                                                    animate: true,
-                                                    title: {
-                                                        text: 'Home'
+                    bottomTabs: {
+                        id: 'Admin',
+                        children: [
+                            {
+                                stack: {
+                                    id: 'Register',
+                                    children: [
+                                        {
+                                            component: {
+                                                name: 'admin.Admin',
+                                                options: {
+                                                    topBar: {
+                                                        visible: true,
+                                                        animate: true,
+                                                        title: {
+                                                            text: 'Home'
+                                                        }
+                                                    },
+                                                    bottomTab: {
+                                                        text: 'Home',
+                                                        icon: home_image 
                                                     }
-                                                },
-                                                bottomTab: {
-                                                    text: 'Admin Home',
-                                                    icon: home_image 
                                                 }
                                             }
                                         }
+                                    ],
+                                    options: {
+                                      topBar: {
+                                        visible: true
+                                      }
                                     }
-                                ],
-                                options: {
-                                  topBar: {
-                                    visible: true
-                                  }
                                 }
-                            }
-                        },
-                        {
-                            stack: {
-                                id: 'Register',
-                                children: [
-                                    {
-                                        component: {
-                                            name: 'admin.AdminRegister',
-                                            options: {
-                                                topBar: {
-                                                    visible: true,
-                                                    animate: true,
-                                                    title: {
-                                                        text: 'Register as Provider'
+                            },
+                            {
+                                stack: {
+                                    id: 'Register',
+                                    children: [
+                                        {
+                                            component: {
+                                                name: 'admin.AdminRegister',
+                                                options: {
+                                                    topBar: {
+                                                        visible: true,
+                                                        animate: true,
+                                                        title: {
+                                                            text: 'Register as Provider'
+                                                        }
+                                                    },
+                                                    bottomTab: {
+                                                        text: 'Register',
+                                                        icon: register_image 
                                                     }
-                                                },
-                                                bottomTab: {
-                                                    text: 'Register',
-                                                    icon: register_image 
                                                 }
                                             }
                                         }
+                                    ],
+                                    options: {
+                                      topBar: {
+                                        visible: true
+                                      }
                                     }
-                                ],
-                                options: {
-                                  topBar: {
-                                    visible: true
-                                  }
                                 }
-                            }
-                        },
-                        {
-                            stack: {
-                                id: 'ApproveList',
-                                children: [
-                                    {
-                                        component: {
-                                            name: 'admin.ApprovalList',
-                                            passProps: {
-                                                approveAttest: this.approveAttestHandler,
-                                                data: this.state.data
-                                            },
-                                            options: { 
-                                                topBar: {
-                                                visible: true,
-                                                animate: true,
-                                                title: {
-                                                    text: 'Attestations for Approval'
-                                                }
-                                            }, 
-                                                bottomTab: {
-                                                    text: 'For Approval',
-                                                    icon: list_image 
-                                                }
-                                            } 
+                            },
+                            {
+                                stack: {
+                                    id: 'ApproveList',
+                                    children: [
+                                        {
+                                            component: {
+                                                name: 'admin.ApprovalList',
+                                                passProps: {
+                                                    approveAttest: this.approveAttestHandler,
+                                                    data: this.state.data
+                                                },
+                                                options: { 
+                                                    topBar: {
+                                                    visible: true,
+                                                    animate: true,
+                                                    title: {
+                                                        text: 'Attestations for Approval'
+                                                    }
+                                                }, 
+                                                    bottomTab: {
+                                                        text: 'For Approval',
+                                                        icon: list_image 
+                                                    }
+                                                } 
+                                            }
                                         }
+                                    ],
+                                    options: {
+                                      topBar: {
+                                        visible: true
+                                      }
                                     }
-                                ],
-                                options: {
-                                  topBar: {
-                                    visible: true
-                                  }
                                 }
-                            }
-                        },
-                    ],
-                    options: {
-                      bottomTabs: {
-                        titleDisplayMode: 'alwaysShow' 
-                      }
+                            },
+                        ],
+                        options: {
+                          bottomTabs: {
+                            titleDisplayMode: 'alwaysShow' 
+                          }
+                        }
                     }
                 }
-            }
-        })
+            })
+        } catch (err) {
+            alert(err)
+        }
+    }
+
+    goToPatient = async () => { 
+        try { 
+            const home_image = await Icon.getImageSource("ios-home", 30);
+            const records_image = await Icon.getImageSource("ios-albums", 30);
+            const input_image = await Icon.getImageSource("ios-add", 30);
+            
+            //await Navigation.dismissAllModals();
+            await Navigation.setRoot({
+            root: {
+                    bottomTabs: {
+                        id: 'Admin',
+                        children: [
+                            {
+                                stack: {
+                                    id: 'Patient',
+                                    children: [
+                                        {
+                                            component: {
+                                                name: 'patient.Patient',
+                                                options: {
+                                                    topBar: {
+                                                        visible: true,
+                                                        animate: true,
+                                                        title: {
+                                                            text: 'Home'
+                                                        }
+                                                    },
+                                                    bottomTab: {
+                                                        text: 'Home',
+                                                        icon: home_image 
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    options: {
+                                      topBar: {
+                                        visible: true
+                                      }
+                                    }
+                                }
+                            },
+                            {
+                                stack: {
+                                    id: 'Immunizations',
+                                    children: [
+                                        {
+                                            component: {
+                                                name: 'patient.ImmunList',
+                                                passProps: { 
+                                                    data: this.state.patientdata
+                                                },
+                                                options: {
+                                                    topBar: {
+                                                        visible: true,
+                                                        animate: true,
+                                                        title: {
+                                                            text: 'My Immunizations'
+                                                        }
+                                                    },
+                                                    bottomTab: {
+                                                        text: 'My Immunizations',
+                                                        icon: records_image 
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    options: {
+                                      topBar: {
+                                        visible: true
+                                      }
+                                    }
+                                }
+                            },
+                            {
+                                stack: {
+                                    id: 'Input',
+                                    children: [
+                                        {
+                                            component: {
+                                                name: 'patient.ImmunInput', 
+                                                options: { 
+                                                    topBar: {
+                                                    visible: true,
+                                                    animate: true,
+                                                    title: {
+                                                        text: 'Immunization Input'
+                                                    }
+                                                }, 
+                                                    bottomTab: {
+                                                        text: 'Input',
+                                                        icon: input_image 
+                                                    }
+                                                } 
+                                            }
+                                        }
+                                    ],
+                                    options: {
+                                      topBar: {
+                                        visible: true
+                                      }
+                                    }
+                                }
+                            },
+                        ],
+                        options: {
+                          bottomTabs: {
+                            titleDisplayMode: 'alwaysShow' 
+                          }
+                        }
+                    }
+                }
+            })
         } catch (err) {
             alert(err)
         }

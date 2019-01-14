@@ -1,13 +1,34 @@
-import React, { PureComponent } from 'react'
-import { View, StyleSheet, FlatList, TouchableOpacity } from 'react-native'
+import React, { Component } from 'react'
+import { View, Text, Button, FlatList, TouchableOpacity, StyleSheet } from 'react-native'
 import { Navigation } from 'react-native-navigation'
-import { toApproveAttest, toHome } from '../Navigation'; 
-import ApprovalListItem from './ApprovalListItemExp';
+import { toHome } from '../navigation';
+ 
+ 
 
-export default class ApprovalList extends PureComponent { 
+class ImmunListItem extends Component {
+    
+    onPress = () => { 
+      this.props.onPressItem(this.props.id);
+    };
+  
+    render() { 
+        return (
+            <TouchableOpacity onPress={this.onPress}>
+                <View>
+                    <Text>
+                      {this.props.title}
+                    </Text>
+                </View>
+            </TouchableOpacity>
+        );
+    }
+}
+
+export default class ImmunList extends Component { 
+    
     constructor(props) {
         super(props)
-        this.goApproveAttest = this.goApproveAttest.bind(this)
+        this.showDetails = this.showDetails.bind(this)
     }
 
     static options(props) {
@@ -19,20 +40,11 @@ export default class ApprovalList extends PureComponent {
             }
         }
     }
- 
-    // goApproveAttest = async (itemId) => { 
-    //     //const itemId = 3;
-    //     await alert("ApprovalListExp id: " + itemId)
-    //     //const selectedItem = this.state.data[1]
-    //     const selectedItem = await this.state.data.filter( (item) => { return item.id  === itemId })
-    //     await alert("ApprovalListExp desc: " + selectedItem.description)
-    //     //toApproveAttest(selectedItem) 
-    // }
-
-    goApproveAttest = async (itemId) => {   
+   
+    showDetails = async (itemId) => {   
         Navigation.push(this.props.componentId, {
             component: {
-              name: 'admin.ApproveAttest', 
+              name: 'patient.ImmunDetails', 
                 passProps: {
                     itemId: itemId,
                     data: this.props.data, 
@@ -44,9 +56,9 @@ export default class ApprovalList extends PureComponent {
     // See: https://facebook.github.io/react-native/docs/flatlist
 
     renderItem = ({item}) => (
-        <ApprovalListItem 
+        <ImmunListItem 
             id={item.id}
-            onPressItem={this.goApproveAttest} 
+            onPressItem={this.showDetails} 
             title={item.description + "(" + item.dateAdministered + ")"}             
         />
      );
@@ -66,17 +78,12 @@ export default class ApprovalList extends PureComponent {
             </View> 
         ) 
     }
-}
+} 
 
 const styles = StyleSheet.create({
     container: {
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center'
-    },
-    item: {
-      padding: 10,
-      fontSize: 18,
-      height: 44,
-    },
+    }
 })

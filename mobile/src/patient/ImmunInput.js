@@ -3,31 +3,24 @@ import { View, Text, Button, StyleSheet } from 'react-native'
 import { Navigation } from 'react-native-navigation'
 import { toHome } from '../navigation';
 
-export default class Patient extends Component {
+export default class ImmunInput extends Component {
     static options(props) {
         return {
             topBar: {
                 title: {
-                    text: 'Patient' 
+                    text: 'Input' 
                 }
             }
         }
     }
- 
-    goToHome = () => {
-        toHome()
-    }
-
+  
     render() {
         return (
             <View style={styles.container}>
-                <Text>Patient Page</Text>
-                <Button
-                    onPress={this.goToHome}
-                    title="Go Back"
-                />
+                <Text>Immunization Input</Text> 
             </View>
-        ) 
+        )
+       
     }
 }
 

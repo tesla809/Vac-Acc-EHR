@@ -1,40 +1,14 @@
-import React, { Component } from 'react'
-import { View, Text, Button, StyleSheet, FlatList, TouchableOpacity } from 'react-native'
-import { Navigation } from 'react-native-navigation'
-import { toApproveAttest, toHome } from '../Navigation'; 
+import React, { PureComponent } from 'react'
+import { View, StyleSheet, FlatList, TouchableOpacity } from 'react-native'
+import { Navigation } from 'react-native-navigation' 
 import ApprovalListItem from './ApprovalListItem';
 
-export default class ApprovalList extends Component {
-     
-    state = {data: 
-        [
-            { 
-                id: 1,
-                patient: 'A',
-                description: 'Anti Tetanus Immunization',
-                dateAdministered: '2001-05-23',
-                location: 'ABC Medical Clinic 123 Main St. Anytown, Anystate, USA',
-                adminBy: 'Dr. John Smith'
-            },
-            { 
-                id: 2,
-                patient: 'A',
-                description: 'Anti Rabies Immunization',
-                dateAdministered: '2002-07-28',
-                location: 'ABC Medical Clinic 123 Main St. Anytown, Anystate, USA',
-                adminBy: 'Dr. Jane Dane'
-            },
-            { 
-                id: 3,
-                patient: 'B',
-                description: 'Anti Polio Vaccination',
-                dateAdministered: '2005-06-15',
-                location: 'ABC Medical Clinic 101 Main St. Anytown, Anystate, USA',
-                adminBy: 'Dr. Terry Taylor'
-            }  
-        ]
-    } 
-    
+export default class ApprovalList extends PureComponent { 
+    constructor(props) {
+        super(props)
+        this.goApproveAttest = this.goApproveAttest.bind(this)
+    }
+
     static options(props) {
         return {
             topBar: {
@@ -44,14 +18,18 @@ export default class ApprovalList extends Component {
             }
         }
     }
- 
-    approveAttest = async () => { 
-        const itemId = 3;
-        await alert(itemId)
-        //const selectedItem = this.state.data[1]
-        const selectedItem = await this.state.data.filter( (item) => { return item.id  === itemId })
-        await alert(selectedItem.description)
-        toApproveAttest(selectedItem) 
+  
+
+    goApproveAttest = async (itemId) => {   
+        Navigation.push(this.props.componentId, {
+            component: {
+              name: 'admin.ApproveAttest', 
+                passProps: {
+                    itemId: itemId,
+                    data: this.props.data, 
+                }                  
+            }
+        });
     }
 
     // See: https://facebook.github.io/react-native/docs/flatlist
@@ -59,18 +37,21 @@ export default class ApprovalList extends Component {
     renderItem = ({item}) => (
         <ApprovalListItem 
             id={item.id}
-            onPressItem={this.approveAttest} 
+            onPressItem={this.goApproveAttest} 
             title={item.description + "(" + item.dateAdministered + ")"}             
         />
      );
 
     render() {
-        return (
+        const { data } = this.props        
+        const dataList = Array.from( data.values() )
+        return ( 
            <View style={styles.container}>
                  
                 <FlatList 
-                    data={ this.state.data} 
-                    keyExtractor={(item, index) => item.id}
+                    data={ dataList } 
+                    extraData={this.state}
+                    keyExtractor={(item, index) => `${item.id}`}
                     renderItem={this.renderItem} 
                 /> 
             </View> 

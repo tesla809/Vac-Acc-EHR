@@ -1,5 +1,5 @@
 import {Navigation} from 'react-native-navigation'; 
-import { register } from './src/Registry'; 
+import { register } from './src/registry'; 
 /*
 
  This initializes the application’s beginning navigation stack
