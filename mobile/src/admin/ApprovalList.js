@@ -1,7 +1,26 @@
 import React, { PureComponent } from 'react'
-import { View, StyleSheet, FlatList, TouchableOpacity } from 'react-native'
-import { Navigation } from 'react-native-navigation' 
-import ApprovalListItem from './ApprovalListItem';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native'
+import { Navigation } from 'react-native-navigation'  
+import { list } from '../appStyles';
+
+class ApprovalListItem extends PureComponent {
+    
+    onPress = () => { 
+      this.props.onPressItem(this.props.id);
+    };
+  
+    render() { 
+        return (
+            <TouchableOpacity onPress={this.onPress}>
+                <View>
+                    <Text style = {list.item}>
+                      {this.props.title}
+                    </Text>
+                </View>
+            </TouchableOpacity>
+        );
+    }
+}
 
 export default class ApprovalList extends PureComponent { 
     constructor(props) {

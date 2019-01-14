@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import { View, Text, Button, StyleSheet } from 'react-native'
+import { View, Text, Button, TouchableOpacity, StyleSheet } from 'react-native'
 import { Navigation } from 'react-native-navigation' 
 import Icon from 'react-native-vector-icons/Ionicons';
-
-import {  toPatient } from './navigation';
+import { field, layout } from './appStyles';
   
 class Home extends Component {
      
@@ -96,11 +95,16 @@ class Home extends Component {
     render() {
         return (
              <View style={styles.container}>
-                <Text> Welcome to Vac-Acc-EHR </Text> 
+                <Text style={layout.h1}> Welcome to Vac-Acc-EHR </Text> 
+                <TouchableOpacity style={field.button}>
+                    <Button onPress={this.goToAdmin} title="Login as Vacc Admin" />
+                </TouchableOpacity>    
+                <TouchableOpacity style={field.button}>    
+                    <Button onPress={this.goToPatient} title="Login as Patient" /> 
+                </TouchableOpacity>
+                
 
-                <Button onPress={this.goToAdmin} title="Login as Vacc Admin" />
-
-                <Button onPress={this.goToPatient} title="Login as Patient" /> 
+                
             </View>
         )
     }

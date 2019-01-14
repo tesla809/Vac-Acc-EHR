@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { View, Text, Button, FlatList, TouchableOpacity, StyleSheet } from 'react-native'
 import { Navigation } from 'react-native-navigation'
-import { toHome } from '../navigation';
- 
+
+import ViewSection from '../components/ViewSection';
+import { list, layout } from '../appStyles';
  
 
 class ImmunListItem extends Component {
@@ -14,11 +15,11 @@ class ImmunListItem extends Component {
     render() { 
         return (
             <TouchableOpacity onPress={this.onPress}>
-                <View>
-                    <Text>
+                <ViewSection>
+                    <Text style = {list.item}>
                       {this.props.title}
                     </Text>
-                </View>
+                </ViewSection>
             </TouchableOpacity>
         );
     }
@@ -67,7 +68,7 @@ export default class ImmunList extends Component {
         const { data } = this.props        
         const dataList = Array.from( data.values() )
         return ( 
-           <View style={styles.container}>
+           <View style={layout.container}>
                  
                 <FlatList 
                     data={ dataList } 
@@ -79,11 +80,3 @@ export default class ImmunList extends Component {
         ) 
     }
 } 
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center'
-    }
-})

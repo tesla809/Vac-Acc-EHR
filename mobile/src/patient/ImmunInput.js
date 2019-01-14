@@ -1,9 +1,15 @@
 import React, { Component } from 'react'
 import { View, Text, Button, StyleSheet } from 'react-native'
-import { Navigation } from 'react-native-navigation'
-import { toHome } from '../navigation';
+
+import ImmunizationInput from '../components/patient/ImmunInput';
+import { layout } from '../appStyles';
 
 export default class ImmunInput extends Component {
+
+    constructor(props) {
+        super(props)
+        this.onAddInput = this.onAddInput.bind(this)
+    }
     static options(props) {
         return {
             topBar: {
@@ -14,20 +20,17 @@ export default class ImmunInput extends Component {
         }
     }
   
+    onAddInput = () => {
+        alert('onAddInput')
+    }
+
     render() {
         return (
-            <View style={styles.container}>
-                <Text>Immunization Input</Text> 
+            <View style={layout.container}>
+                <ImmunizationInput onUpdateSubmit={this.onAddInput} />
             </View>
         )
        
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center'
-    }
-})
+ 

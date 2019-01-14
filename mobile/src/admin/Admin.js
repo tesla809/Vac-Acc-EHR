@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react'
-import { View, Text, Button, StyleSheet } from 'react-native'
+import { View, Text, Button, TouchableOpacity } from 'react-native'
  
 import { toHome } from '../navigation'; 
+import { layout, field } from '../appStyles';
 
 export default class Admin extends PureComponent {
    
@@ -19,36 +20,24 @@ export default class Admin extends PureComponent {
     goToHome = () => {
         toHome()
     }
-
-    // approveAttestHandler =  async (itemId) => {
-    //     //await alert("Admin approveAttestHandler itemId: " + itemId)
-    //     selectedItem = await this.pros.data.filter( (item) => { return item.id  === itemId })
-    //     //await alert("Admin approveAttestHandler desc: " + this.state.data[1].description)
-    //     this.display(selectedItem)
-    // }
-
-    // display(item) {
-    //     alert(item.description);
-    // }
+ 
     render() {
         return (
-            <View style={styles.container}>
-                <Text>Admin Menu</Text>
-                <Text>
-                    As Administering provider for immunization....
-
+            <View style={layout.container}>
+                <Text style={layout.h1}>Admin Menu</Text>
+                <Text style={layout.h3}> 
+                    As Administering provider for immunization.... 
                 </Text>
-               
+                <TouchableOpacity style={field.button}>     
+                    <Button
+                        onPress={this.goToHome}
+                        title="Go Back"
+                    />
+                </TouchableOpacity>
+                
             </View>
         )
        
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center'
-    }
-})
+ 

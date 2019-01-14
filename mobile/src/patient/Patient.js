@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { View, Text, Button, StyleSheet } from 'react-native'
-import { Navigation } from 'react-native-navigation'
+import { View, Text, Button, TouchableOpacity } from 'react-native' 
 import { toHome } from '../navigation';
+import { layout, field } from '../appStyles';
 
 export default class Patient extends Component {
     static options(props) {
@@ -20,21 +20,18 @@ export default class Patient extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
-                <Text>Patient Page</Text>
-                <Button
-                    onPress={this.goToHome}
-                    title="Go Back"
-                />
+            <View style={layout.container}>
+                <Text style={layout.h1}>Patient Home Page</Text>
+                <Text style={layout.h2}>About patient application text here....</Text>
+                <TouchableOpacity style={field.button}>     
+                    <Button
+                        onPress={this.goToHome}
+                        title="Go Back"
+                    />
+                </TouchableOpacity>
+                
             </View>
         ) 
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center'
-    }
-})
+ 

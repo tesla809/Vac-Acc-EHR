@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { View, Text, Button, StyleSheet } from 'react-native'
 
+import Register from '../components/admin/Register'
+import { layout } from '../appStyles';
+
 export default class AdminRegister extends Component {
     static options(props) {
         return {
@@ -11,20 +14,17 @@ export default class AdminRegister extends Component {
             }
         }
     }
- 
+
+    onAddInput = () => {
+        alert('onAddInput')
+    }
+    
     render() {
         return (
-            <View style={styles.container}>
-                <Text> Register as Admin</Text> 
+            <View style={layout.container}>
+                <Register onUpdateSubmit={this.onAddInput} /> 
             </View>
         ) 
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center'
-    }
-})
+ 
