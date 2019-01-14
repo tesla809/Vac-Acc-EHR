@@ -62,15 +62,17 @@ export const toApprovalList = () => Navigation.setRoot({
     }
 });
  
-export const toApproveAttest = () => Navigation.setRoot({
+export const toApproveAttest = (data) => Navigation.setRoot({
     root: {
         stack: {
             id: 'ApproveAttest',
             children: [
                 {
                     component: {
-                        name: 'admin.ApproveAttest', 
-                  
+                        name: 'admin.ApproveAttest',  
+                        passProps: {
+                            data: data
+                        }                  
                     }
                 }
             ],

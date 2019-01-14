@@ -1,0 +1,30 @@
+ <Button
+                    onPress={ () => {
+                        Navigation.push(this.props.componentId, {
+                            component: {
+                                name: 'admin.AdminRegister'
+                            }
+                        })  
+                    }} title="Register as Provider" 
+                />
+
+                <Button
+                    onPress={ () => {
+                        Navigation.push(this.props.componentId, {
+                            component: {
+                                name: 'admin.ApprovalList',
+                                passProps: {
+                                    approveAttest: this.approveAttestHandler,
+                                    data: this.state.data
+                                },
+                                
+                            }
+                        })  
+                    }}  
+                    title="Attestations Approval" 
+                />
+               
+                <Button
+                    onPress={this.goToHome}
+                    title="Go Back"
+                />
