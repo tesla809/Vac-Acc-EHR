@@ -46,7 +46,7 @@ class RecordsList extends Component {
       .then( (data) => {
         
         const immunizations = JSON.parse( data || '[]')
-        console.log(" ------ [RecordsList]  immunization data:\n", immunizations)
+        //console.log(" ------ [RecordsList]  immunization data:\n", immunizations)
 
         this.setState({...this.state, immunizations})
       })
@@ -61,7 +61,7 @@ class RecordsList extends Component {
   render() {
     const { immunizations } = this.state;
     const { userSession, username } = this.props ;
-    console.log("---[RecordsList] render", immunizations)
+    //console.log("---[RecordsList] render", immunizations)
     return (
        <Header userSession={userSession}>
         <div className="container">
@@ -74,7 +74,7 @@ class RecordsList extends Component {
 
                   { immunizations === 'undefined' ? <div>NO RECORD</div>:
                     immunizations.map( (immunIndex, index) => 
-                      <RecordItem key={index} immunIndex={immunIndex} username={username} userSession={userSession}/>)}
+                      <RecordItem key={index} immunIndex={immunIndex} userSession={userSession}/>)}
             </div>
           </div>  
           <button className="btn btn-success m-4" onClick = {() => { 

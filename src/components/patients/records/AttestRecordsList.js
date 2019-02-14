@@ -15,34 +15,32 @@ class AttestRecordsList extends React.Component {
     }
   }
 
-  componentDidMount() {
-    this.fetchAttestedData()
-  }
- 
-  fetchAttestedData = async () => {
-    
+  componentWillMount() {
     const { userSession } = this.props 
     if (userSession.isUserSignedIn()) {
       const user = userSession.loadUserData()
       this.setState({ user })
-      console.log("---[AttestRecordsList] user is signed in:", user.username)
+      //console.log("---[AttestRecordsList] user is signed in:", user.username)
     }
+  }
+  componentDidMount() {
+    this.fetchAttestedData()
+  }
+ 
+  fetchAttestedData = async () => { 
+    this.setState({ isLoading: true }) 
+    const { userSession } = this.props 
 
-    this.setState({ isLoading: true })
-    
-    try {
-      
-      console.log(" ------ [AttestRecordsList]  start fetching attestions data")
-      
+    try { 
+      // console.log(" ------ [AttestRecordsList]  start fetching attestions data") 
       const { user }  = this.state
-      console.log("   USERNAME: ", user.username); 
-
+      // console.log("   USERNAME: ", user.username);   
       const options = { decrypt: false, username: user.username} 
 
       const file  = await userSession.getFile(ATTEST_INDEX_FILE, options)
       const patientAttestations = JSON.parse( file || '[]')
 
-      console.log(" ------ [AttestRecordsList]  patientAttestations:\n", patientAttestations)
+      // console.log(" ------ [AttestRecordsList]  patientAttestations:\n", patientAttestations)
 
       this.setState({...this.state, patientAttestations})
     } catch (err) {
@@ -52,11 +50,12 @@ class AttestRecordsList extends React.Component {
     } 
   }
 
-  render() { 
-    const {immunId, onHistory}  = this.props; 
-    const { patientAttestations } = this.state;
+  render() {  
+
+    const { immunId, onHistory } = this.props;
+    const { patientAttestations } = this.state; 
     
-    console.log(" ----- [AttestRecordsList] immun id:", immunId)
+    //console.log(" ----- [AttestRecordsList] immun id:", immunId)
 
     return (
       <div className="container">  
@@ -64,9 +63,7 @@ class AttestRecordsList extends React.Component {
           <div>
             { patientAttestations.map( (patientAttestation, index) => 
                <AttestRecordItem key={index} parentid={immunId} patientAttestation={patientAttestation}   />)}
-          </div> 
-         
-        
+          </div>  
       </div>
     ); 
   }  

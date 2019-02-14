@@ -11,46 +11,52 @@ class App extends Component {
     this.state = {
         userRole: "",
         userSession: new UserSession({ appConfig }),
-        username: "",
+        user: {}
     }   
   }
 
-  componentDidMount = async () => {
-    const { userSession } = this.state 
+  // componentWillMount = async () => {
    
+  // }
+
+  componentWillMount = async () => {   
+    //const userSession = new UserSession({ appConfig })
+    const { userSession } = this.state;
+    let user;
     if(!userSession.isUserSignedIn() && userSession.isSignInPending()) {
-      const userData = await userSession.handlePendingSignIn()
-
-      if (!userData.username) {
+      user =  await userSession.handlePendingSignIn() 
+      if (!user.username) {
         throw new Error('This app requires a username.')
-      }
-       
-      console.log("++++++ Apps userData.username +++++")
-      console.log(userData.username)
+      } 
+    
+      this.setState({ userSession: userSession , user: user }) 
 
-      this.setState({ username: userData.username })
+      console.log("++++++ Apps this.state.user.username +++++")
+      console.log(user.username) 
 
       if (this.state.userRole === "admin") {
         this.setState({userRole: "admin"})
-        window.location =   `/VacAdmin/${userData.username}`
+        window.location =   `/VacAdmin/${user.username}`
       } else {
         this.setState({userRole: "patient"})
-        window.location = `/Patient/${userData.username}`
-      } 
+        window.location = `/Patient/${user.username}`
+      }  
+
     }
+
+    
   }
 
   render() { 
     console.log("--- App.js render() ---")
-    console.log("Username: ", this.state.username)
+    console.log("Username: ", this.state.user.username)
     
-    const { userSession } = this.state;
-    console.log("    IsUserSignedIn:", userSession.isUserSignedIn(),  " username:");
-
+    const { userSession } = this.state; 
+    console.log("UserSession: ", this.state.userSession)
     return (
        <div className="App">
-          {userSession.isUserSignedIn() ?
-            <Routes userSession={userSession} username={this.state.username}/>
+          {userSession && userSession.isUserSignedIn() ?
+            <Routes userSession={userSession} />
           :
             <Login userSession={userSession} />
           }

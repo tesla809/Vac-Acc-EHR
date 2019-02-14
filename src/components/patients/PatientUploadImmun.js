@@ -29,8 +29,8 @@ class PatientUploadImmun extends React.Component {
         const { userSession } = this.props 
         userSession.getFile(IMMUN_INDEX_FILE, options)
           .then( (file) => { 
-            const immunizations = JSON.parse( file || '[]') 
-            this.setState({...this.state, immunizations})
+            const immunIndex = JSON.parse( file || '[]') 
+            this.setState({...this.state, immunIndex})
           })
           .catch(err => {
             console.log("Could not fetch immunization data:\n", err)
@@ -48,21 +48,20 @@ class PatientUploadImmun extends React.Component {
         const dateAdmin = this.state.dateAdmin;
         const adminBy = event.target.elements.adminBy.value;
         const location = event.target.elements.location.value;
-        const file = event.target.elements.file.value;
+       
         const id = uuidv4();  
-        //console.log("[PatientUploadImmun] submitImmunization post:", post);
-        if (description && dateAdmin && adminBy && location) {
-            //this.props.onInputImmun(post);
+        
+        if (description && dateAdmin && adminBy && location) { 
             const input = {
                 id: id,
                 description: description,
                 dateAdmin: dateAdmin,
                 adminBy: adminBy,
-                location: location,
-                file: file  
+                location: location 
             }
             await this.saveNewUnAttestedImmun(input)
-        } 
+            
+        }   
     }
 
     saveNewUnAttestedImmun = async (data) => { 
@@ -76,6 +75,7 @@ class PatientUploadImmun extends React.Component {
 
         console.log("----- saveNewUnAttestedImmun all immunizations -----")
         console.log("Index Filename: ", IMMUN_INDEX_FILE)
+        console.log(this.state.immunIndex)
         console.log(JSON.stringify([...this.state.immunIndex, immunIndex]))
 
 
@@ -87,6 +87,9 @@ class PatientUploadImmun extends React.Component {
          
         await userSession.putFile(IMMUN_INDEX_FILE, JSON.stringify([...this.state.immunIndex, immunIndex]), options)
         await userSession.putFile(file, JSON.stringify(data), options)
+
+        this.props.onHistory.push(`/RecordsList/${this.state.user.username}`)
+
     }
 
     render () { 
@@ -119,11 +122,7 @@ class PatientUploadImmun extends React.Component {
                                 <label htmlFor="location">Location</label>
                                 <input className="form-control" type="text" id="location" placeholder="Company and address"/>
                             </div>
-                            <div className="form-group m-4 ">
-                                <label htmlFor="file">Upload attestation file</label>
-                                <input className="form-control-file btn  " type="file" id="file" />
-                                <small className="form-text text-muted" id="helpFile">Upload image file for attestation approval</small>
-                            </div>
+                            
                             <button type="submit" className="btn btn-success m-4">Save</button> 
                             <button type="submit" className="btn btn-success m-4" onClick = {() => { 
                                     onHistory.push(`/Patient/${this.state.user.username}`);

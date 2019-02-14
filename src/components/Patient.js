@@ -6,7 +6,7 @@ class Patient extends Component {
 
   state = { user: {}}
 
-  componentDidMount() { 
+  componentWillMount() { 
     const { userSession } = this.props 
     if (userSession.isUserSignedIn()) {
       const user = userSession.loadUserData()
@@ -16,11 +16,11 @@ class Patient extends Component {
 
   render() {
     const { onHistory } = this.props;
-    console.log("====== Patient ====") 
-    const { userSession, username } = this.props 
+    // console.log("====== Patient ====") 
+    const { userSession } = this.props 
     const { user } = this.state
 
-    console.log("++++ USERNAME: ", username)
+    // console.log("++++ USERNAME: ", user.username)
 
     return (  
       <Header userSession={userSession}>
@@ -31,9 +31,9 @@ class Patient extends Component {
           <div>
             <div className="col-2"></div>
             <div className="col-8">   
-                <div className="m-2"><Link to={`/RecordsList/${username}`}> View Records </Link></div>
-                <div className="m-2"><Link to={`/PatientUploadImmun/${username}`}> Input Immunization </Link></div>
-                <div className="m-2"><Link to={`/PatientConfig/${username}`}> Settings </Link></div>  
+                <div className="m-2"><Link to={`/RecordsList/${user.username}`}> View Records </Link></div>
+                <div className="m-2"><Link to={`/PatientUploadImmun/${user.username}`}> Input Immunization </Link></div>
+                <div className="m-2"><Link to={`/PatientConfig/${user.username}`}> Settings </Link></div>  
             </div>
           </div>
           <button type="submit" className="btn btn-success m-4" onClick = {() => { 

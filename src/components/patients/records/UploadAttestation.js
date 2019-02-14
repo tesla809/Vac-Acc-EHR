@@ -1,8 +1,9 @@
-import React from 'react';   
+import React from 'react';    
+import FileReaderInput from 'react-file-reader-input'; 
 import Header from '../../Header'
 import { ATTEST_FILENAME_PREFIX, ATTEST_INDEX_FILE, IMMUN_FILENAME_PREFIX } from '../../../constants'
-
-const uuidv4 = require('uuid/v4');
+ 
+const uuidv4 = require('uuid/v4'); 
 
 class UploadAttestation extends React.Component { 
 
@@ -10,7 +11,8 @@ class UploadAttestation extends React.Component {
         attestIndex: [],  
         immunId: "",
         user: {},
-        isLoading: false
+        isLoading: false,
+        fileToUpload: ""
     }
 
     componentDidMount() {
@@ -45,35 +47,45 @@ class UploadAttestation extends React.Component {
     }
 
     saveNewAttestation = async (data) => { 
-         
-        const attestIndex = {
-            id: data.id,
-            immunId: data.immunId,
-            description: data.description,
-            file: data.file  
-        }
-        const { userSession } = this.props
-        const options = { encrypt: false }  
         
+        this.setState({ isLoading: true}) 
 
-        console.log("----- saveNewAttestation -----")
+        // const attestIndex = {
+        //     id: data.id,
+        //     immunId: data.immunId,
+        //     description: data.description 
+        // }
+
+        // const { userSession } = this.props
+        // const options = { encrypt: false }    
+       
+        //console.log("----- saveNewAttestation -----")
  
-        console.log("Index Filename: ", ATTEST_INDEX_FILE)
-        console.log(attestIndex)
-        console.log(JSON.stringify([...this.state.attestIndex, attestIndex]))
+        // console.log("Index Filename: ", ATTEST_INDEX_FILE)
+        // console.log(attestIndex)
+        // console.log(JSON.stringify([...this.state.attestIndex, attestIndex])) 
 
+        // const file = ATTEST_FILENAME_PREFIX + data.id + ".json"
 
-        const file = ATTEST_FILENAME_PREFIX + data.id + ".json"
-
-        console.log("----- saveNewAttestation  -----") 
-        console.log("Filename: ", file)
-        console.log("Data:\n", JSON.stringify(data)) 
+        //console.log("----- saveNewAttestation  -----") 
+        //console.log("Filename: ", file) 
          
-        // await userSession.putFile(ATTEST_FILENAME_PREFIX, JSON.stringify([...this.state.attestIndex, attestIndex]), options)
-        // await userSession.putFile(file, JSON.stringify(data), options)
+        // await userSession.putFile(ATTEST_INDEX_FILE, JSON.stringify([...this.state.attestIndex, attestIndex]), options)
+        // await userSession.putFile(file, imageBuff, options)
 
         this.props.onHistory.push(`/Record/${this.state.immunId}`)
     }
+  
+
+    handleChange = (e, results) => {
+        results.forEach(result => {
+          const [e, file] = result;
+          // console.log(`+++++++ Successfully uploaded ${file.name}!`)
+          // this.props.dispatch(uploadFile(e.target.result));
+          // console.log(`Successfully uploaded ${file.name}!`);
+          this.setState({fileToUpload: file.name })
+        });
+      }
 
     render () { 
         const { onHistory } = this.props; 
@@ -87,29 +99,32 @@ class UploadAttestation extends React.Component {
                         </div>
                     </div> 
                     <div className="d-flex flex-row justify-content-start">
-                        <div >
-                            <form onSubmit={this.submitAttestation}>
-                                <div className="form-group m-4">
-                                    <label htmlFor="name">Description</label>
-                                    <input className="form-control" type="text" id="description" placeholder="Name of immunization"/>
-                                </div>   
-                                <div className="form-group m-4 ">
-                                    <label htmlFor="file">Upload attestation file</label>
-                                    <input className="form-control-file btn  " type="file" id="file" />
-                                    <small className="form-text text-muted" id="helpFile">Upload image file for attestation approval</small>
-                                </div>
-                                <button type="submit" className="btn btn-success m-4">Save</button> 
-                                <button type="submit" className="btn btn-success m-4" onClick = {() => { 
-                                        onHistory.push(`/Record/${this.state.immunId}`);
-                                    }}>Cancel</button> 
-                            </form>
-                                
-                        </div>
+                        
+                        <form onSubmit={this.submitAttestation}>
+                            <div className="form-group m-4">
+                                <label htmlFor="name">Description</label>
+                                <input className="form-control" type="text" id="description" placeholder="Name of immunization"/>
+                            </div>   
+                            <div className="form-group m-4 ">
+                                <label htmlFor="file">Upload attestation file</label> 
+                               
+                                <FileReaderInput as="binary" id="file"
+                                        onChange={this.handleChange}>
+                                    <button>Select a file!</button>
+                                </FileReaderInput>
+                                <label htmlFor="fileToUpload">File To Upload:</label>
+                                <div>{this.state.fileToUpload}</div>
+                                 
+                            </div>
+                            <button type="submit" className="btn btn-success m-4">Save</button> 
+                            <button type="submit" className="btn btn-success m-4" onClick = {() => { 
+                                    onHistory.push(`/Record/${this.state.immunId}`);
+                                }}>Cancel</button> 
+                        </form> 
+                        
                     </div>
-                </div>
-
-            </Header>
-           
+                </div> 
+            </Header> 
         );
     } 
 }
