@@ -95,16 +95,20 @@ class PatientUploadImmun extends React.Component {
     render () { 
         const { onHistory } = this.props; 
         const { userSession } = this.props  
-        return (
-            <Header userSession={userSession}>
-            <div className="container">
-                <div className="d-flex flex-row justify-content-start">
-                    <div className="heading m-4">
-                        Patient Immunization Input 
-                    </div>
-                </div> 
-                <div className="d-flex flex-row justify-content-start">
-                    <div >
+        return ( 
+        <section className="container">
+            <div>
+                <div className="col-2"></div> 
+                <div className="col-8 d-flex flex-row justify-content-start">  
+                    <Header label="Patient Immunization Input"  userSession={userSession}/>
+                </div>
+                <div className="col-2"></div> 
+            </div> 
+            <div className="container"> 
+                <div className="col-2"></div> 
+                <div className="col-8">  
+                    <div className="d-flex flex-row justify-content-start">
+                   
                         <form onSubmit={this.submitImmunization}>
                             <div className="form-group m-4">
                                 <label htmlFor="name">Description</label>
@@ -130,10 +134,11 @@ class PatientUploadImmun extends React.Component {
                         </form>
                         
                     </div>
+                    <div className="col-2"></div> 
                 </div>
             </div>
 
-            </Header>
+        </section>
            
         );
     } 

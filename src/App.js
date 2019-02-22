@@ -13,12 +13,8 @@ class App extends Component {
         userSession: new UserSession({ appConfig }),
         user: {}
     }   
-  }
 
-  // componentWillMount = async () => {
-   
-  // }
-
+  } 
   componentWillMount = async () => {   
     //const userSession = new UserSession({ appConfig })
     const { userSession } = this.state;
@@ -29,10 +25,8 @@ class App extends Component {
         throw new Error('This app requires a username.')
       } 
     
-      this.setState({ userSession: userSession , user: user }) 
-
-      console.log("++++++ Apps this.state.user.username +++++")
-      console.log(user.username) 
+      this.setState({ userSession: userSession , user: user })  
+     
 
       if (this.state.userRole === "admin") {
         this.setState({userRole: "admin"})
@@ -40,17 +34,11 @@ class App extends Component {
       } else {
         this.setState({userRole: "patient"})
         window.location = `/Patient/${user.username}`
-      }  
-
-    }
-
-    
+      }   
+    } 
   }
 
-  render() { 
-    console.log("--- App.js render() ---")
-    console.log("Username: ", this.state.user.username)
-    
+  render() {    
     const { userSession } = this.state; 
     console.log("UserSession: ", this.state.userSession)
     return (

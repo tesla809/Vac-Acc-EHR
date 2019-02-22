@@ -21,37 +21,26 @@ class RecordsList extends Component {
     const { userSession } = this.props 
     if (userSession.isUserSignedIn()) {
       const user = userSession.loadUserData()
-      this.setState({ user })
-      console.log("---[RecordsList] user is signed in:", user.username)
+      this.setState({ user }) 
     }
    
     this.fetchImmunizationData()
   }
 
-  fetchImmunizationData = () => {
-    console.log(" ------ [RecordsList]  start fetching immunization data")
-    
-    
+  fetchImmunizationData = () => { 
     const username = this.props.username
-    console.log("   USERNAME: ", username); 
-
-    const options = { decrypt: false, username: username}  //"renegmed.id.blockstack" }
-     
-    this.setState({ isLoading: true })
-
-    
+    console.log("   USERNAME: ", username);  
+    const options = { decrypt: false, username: username}   
+    this.setState({ isLoading: true }) 
 
     const { userSession } = this.props 
     userSession.getFile(IMMUN_INDEX_FILE, options)
-      .then( (data) => {
-        
-        const immunizations = JSON.parse( data || '[]')
-        //console.log(" ------ [RecordsList]  immunization data:\n", immunizations)
-
+      .then( (data) => { 
+        const immunizations = JSON.parse( data || '[]')  
         this.setState({...this.state, immunizations})
       })
       .catch(err => {
-        console.log("Could not fetch immunization data:\n", err)
+        console.err("Could not fetch immunization data:\n", err)
       })  
       .finally(() => {
         this.setState({ isLoading: false })
@@ -60,29 +49,36 @@ class RecordsList extends Component {
   
   render() {
     const { immunizations } = this.state;
-    const { userSession, username } = this.props ;
-    //console.log("---[RecordsList] render", immunizations)
+    const { userSession, username } = this.props ; 
     return (
-       <Header userSession={userSession}>
-        <div className="container">
-          <div className="heading col-12 p-1">
-              Patient Immunization List
+       <section className="container">
+        <div>
+          <div className="col-2"></div> 
+          <div className="col-8">  
+            <Header label="Patient Immunization List" userSession={userSession}/>
           </div>
-          <div>
-            <div className="col-2"></div>
-            <div className="col-8">  
-
-                  { immunizations === 'undefined' ? <div>NO RECORD</div>:
-                    immunizations.map( (immunIndex, index) => 
-                      <RecordItem key={index} immunIndex={immunIndex} userSession={userSession}/>)}
-            </div>
-          </div>  
-          <button className="btn btn-success m-4" onClick = {() => { 
-              this.props.onHistory.push(`/Patient/${username}`);
-          }}> Back </button>
+          <div className="col-2"></div> 
         </div>
-      </Header>
-     
+        
+        <div>
+          <div className="col-2"></div>
+          <div className="col-8">   
+                { immunizations === 'undefined' ? <div>NO RECORD</div>:
+                  immunizations.map( (immunIndex, index) => 
+                    <RecordItem key={index} immunIndex={immunIndex} userSession={userSession}/>)}
+          </div>
+          <div className="col-2"></div>
+        </div> 
+        <div>
+          <div className="col-2"></div>
+          <div className="col-8">    
+            <button className="btn btn-success m-4" onClick = {() => { 
+              this.props.onHistory.push(`/Patient/${username}`);
+            }}> Back </button> 
+          </div>
+          <div className="col-2"></div>
+        </div> 
+      </section>
     ); 
   }
 }

@@ -1,18 +1,12 @@
-import React from 'react'; 
-import { Link } from 'react-router-dom';
+import React from 'react';  
 
-function AttestRecordItem(props) {
-    const parentid = props.parentid; 
-    const id = props.patientAttestation.id; 
-    const str = `/AttestRecord/${parentid}/${id}`;
+const AttestRecordItem = (props) => { 
     return ( 
       <div> 
-       <Link to={str}>{props.patientAttestation.description}</Link> 
-      </div>
-
-
-    );
-   
+       <div>{props.patientAttestation.description}</div>  
+       <img src={`https://ipfs.io/ipfs/${props.patientAttestation.ipfsHash}`}  height="400" width="400" alt=""/>
+      </div>  
+    ); 
 }
 
 export default AttestRecordItem;

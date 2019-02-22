@@ -9,6 +9,8 @@
   "dependencies": {
     "blockstack": "19.0.0-alpha.2",
     "bootstrap": "^4.2.1",
+    "dotenv": "^6.2.0",
+    "ipfs-api": "^26.1.2",
     "react": "^16.6.3",
     "react-bootstrap": "^0.32.4",
     "react-date-picker": "^7.2.0",
